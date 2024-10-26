@@ -1,0 +1,16 @@
+--- configure	2018-02-27 07:25:13.000000000 -0700
++++ configure	2018-04-12 15:21:49.236912000 -0600
+@@ -4690,11 +4690,11 @@
+ fi
+ 
+ 
+-if test "t$found_crypt_func" = there; then
++#if test "t$found_crypt_func" = there; then
+ 
+ $as_echo "#define HAVE_CRYPT 1" >>confdefs.h
+ 
+-fi
++#fi
+ 
+ # Check if zlib is needed
+ 

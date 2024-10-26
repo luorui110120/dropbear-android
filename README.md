@@ -1,36 +1,6 @@
 Android Dropbear
 =========
 
-A patch set and script to download and cross-compile Dropbear SSH server for use on Android with password authentication.
-As the 64-bit binaries don't seem to work reliably, this project is configured to compile 32-bit binaries
-using the Android NDK toolchain.
-
-Generated binares will all be PIE (position indepedent executable) binaries as it is required on Android 5 (L/ollipop).
-
-If building for android < 4.1 then before building, issue:
-```
-export DISABLE_PIE=1
-```
-
-Building Dropbear for Android
-----
-
-The process consists of just four parts:  
-1) Specify the version of Dropbear you'd like to download and crosscompile. Open build-android-dropbear.sh and change the value of ``VERSION`` at the top, which defaults to ``2018.76``  
-2) Build your standalone android toolchain.  
-See the android developer site for more info: https://developer.android.com/ndk/guides/standalone_toolchain.html
-3) Export your toolchain's location:
-```
-export TOOLCHAIN=/path/to/standalone/toolchain
-```
-
-4) Run the build script:
-```
-./build-dropbear-android.sh
-```
-
-Generated binaries will be outputted to ``{android dropbear repo directory}/target/arm``
-
 
 Customizations
 ----
@@ -75,3 +45,12 @@ Thanks to jmfoy for the ```config.sub``` and ```config.guess``` files:
 https://github.com/jfmoy/android-dropbear
 
 Another thank you to the various other repositories out there whose various approches helped lead to this completed project.
+
+已经将代码修改为android版本,可以在N5的Nethunter环境下编译出ARM32版本的, 在eadb 环境下编译出ARM64环境;
+
+执行下面的config命令:
+```
+./configure --enable-static
+```
+
+具体可参考 release下面的配置好的tgz;
