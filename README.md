@@ -53,4 +53,9 @@ Another thank you to the various other repositories out there whose various appr
 ./configure --enable-static
 ```
 
-具体可参考 release下面的配置好的tgz;
+执行编译;
+```
+make PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp"
+```
+
+具体可参考 release下面的配置好的tgz,可以使用release的版本的 sshlogin.id_rsa 实现登入,也可以使用脚本中的默认密码"passwd"登入;
