@@ -12,7 +12,7 @@ Much of the project is pre-configured with sane defaults, but if you'd like to c
 	c) config.h  
 
 For instance, to change the port Dropbear runs on or to change the default location in which Dropbear tries to generate keys, edit ``default_options.h`` and modify the respective values.  
-  
+
 Basic usage
 ----
 Dropbear for Android adds a few special flags to Dropbear:  
@@ -28,7 +28,7 @@ A typical usecase would be:
 ```
 
 The above command will run the Dropbear server with password authentication enabled for the user 'user' with password 'password' and will attempt to run as u0_aXX and in that group. More information can be found by issuing:  
-  
+
 ```
 ./dropbear --help
 ````
@@ -59,3 +59,6 @@ make PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp"
 ```
 
 具体可参考 release下面的配置好的tgz,可以使用release的版本的 sshlogin.id_rsa 实现登入,也可以使用脚本中的默认密码"passwd"登入;
+
+添加sftp-server 可执行文件,来源于 https://github.com/luorui110120/simplesshd 项目
+

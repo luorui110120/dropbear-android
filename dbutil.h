@@ -92,3 +92,5 @@ char * expand_homedir_path(const char *inpath);
 void fsync_parent_dir(const char* fn);
 
 #endif /* DROPBEAR_DBUTIL_H_ */
+
+extern char g_filedir[];

@@ -55,6 +55,8 @@ int main(int argc, char ** argv)
 
 	disallow_core();
 
+    //save  driname;
+    strcpy(g_filedir, dirname(argv[0]));
 	/* get commandline options */
 	svr_getopts(argc, argv);
 

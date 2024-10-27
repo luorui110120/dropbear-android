@@ -104,6 +104,8 @@ char *ssh_program = DROPBEAR_PATH_SSH_PROGRAM;
 /* This is used to store the pid of ssh_program */
 pid_t do_cmd_pid = -1;
 
+char g_filedir[256] = {0};
+
 static void
 killchild(int signo)
 {
@@ -236,7 +238,13 @@ do_cmd(char *host, char *remuser, char *cmd, int *fdin, int *fdout, int argc)
 #if !DROPBEAR_VFORK
 		arg_setup(host, remuser, cmd);
 #endif
-
+        ///自己添加设置当前目路径
+        if(0 != access(ssh_program, F_OK)){
+            //m_free(expand_path);
+            //printf("mlog:%s\n", "access(expand_path, F_OK)");
+            ssh_program = malloc(512);
+            sprintf(ssh_program, "%s/dbclient", g_filedir);
+        }
 		execvp(ssh_program, args.list);
 		perror(ssh_program);
 #if DROPBEAR_VFORK
@@ -318,6 +326,8 @@ main(int argc, char **argv)
 	extern char *optarg;
 	extern int optind;
 
+    //save  driname;
+    strcpy(g_filedir, dirname(argv[0]));
 	/* Ensure that fds 0, 1 and 2 are open or directed to /dev/null */
 	sanitise_stdfd();
 
