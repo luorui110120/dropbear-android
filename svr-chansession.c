@@ -604,10 +604,11 @@ static int sessionpty(struct ChanSess * chansess) {
 	if (!pw)
 		dropbear_exit("getpwnam failed after succeeding previously");
 	
-	pty_setowner(pw, chansess->tty);
+	//pty_setowner(pw, chansess->tty);
 
-	if (svr_opts.android_mode) {
-		free(pw);
+	if (!svr_opts.android_mode) {
+        pty_setowner(pw, chansess->tty);
+		//free(pw);
 	}
 
 	/* Set up the rows/col counts */
