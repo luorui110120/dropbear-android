@@ -62,5 +62,14 @@ make PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp"
 
 添加sftp-server 可执行文件,来源于 https://github.com/luorui110120/simplesshd 项目,注意在执行 dropbear时需要使用决定路径,否则sftp-server会出问题,具体可参考release包中的startsshd.sh脚本;
 
+客户端连接命令例子:
+
+```
+ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLevel=ERROR -i ~/.ssh/xxxx.id_rsa root@$ipaddr -p $save_port
+```
 
 
+
+参考文档
+
+https://fh0.github.io/%E7%BC%96%E8%AF%91/2021/02/18/android-dropbear.html
