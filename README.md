@@ -60,5 +60,7 @@ make PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp"
 
 具体可参考 release下面的配置好的tgz,可以使用release的版本的 sshlogin.id_rsa 实现登入,也可以使用脚本中的默认密码"passwd"登入;
 
-添加sftp-server 可执行文件,来源于 https://github.com/luorui110120/simplesshd 项目
+添加sftp-server 可执行文件,来源于 https://github.com/luorui110120/simplesshd 项目,注意在执行 dropbear时需要使用决定路径,否则sftp-server会出问题,具体可参考release包中的startsshd.sh脚本;
+
+
 
