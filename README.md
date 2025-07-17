@@ -62,6 +62,11 @@ make PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp"
 
 添加sftp-server 可执行文件,来源于 https://github.com/luorui110120/simplesshd 项目,注意在执行 dropbear时需要使用决定路径,否则sftp-server会出问题,具体可参考release包中的startsshd.sh脚本;
 
+2018.76.2 版本增加了读取可执行目录下的 dropbear_env.txt 文件来设置环境变量,txt中的例子数据:
+
+MY_FLAG=1
+MY_KKDD=/bin:/usr/local/bin
+
 客户端连接命令例子:
 
 ```

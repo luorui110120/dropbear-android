@@ -1017,6 +1017,22 @@ static void execchild(const void *user_data) {
 	if (chansess->client_string) {
 		addnewvar("SSH_CLIENT", chansess->client_string);
 	}
+
+	////自己添加环境变量,让读取 dropbear_env.txt文件
+	do{
+		char szenvpath[256] = {0};
+		sprintf(szenvpath, "%s/dropbear_env.txt", g_filedir);
+		FILE *fp = fopen(szenvpath, "r");
+		if (fp) {
+			char line[256];
+			while (fgets(line, sizeof(line), fp)) {
+				line[strcspn(line, "\n")] = '\0'; // 去掉换行
+				putenv(strdup(line)); // 添加环境变量
+			}
+			fclose(fp);
+		}
+	}while(0);
+	////
 	
 #if DROPBEAR_SVR_PUBKEY_OPTIONS_BUILT
 	if (chansess->original_command) {
